@@ -1,8 +1,9 @@
 package TTTN.controller;
 
+import TTTN.dto.UsersDTO;
 import TTTN.entity.UsersEntity;
 import TTTN.payload.LoginRequest;
-import TTTN.service.imp.usersService;
+import TTTN.service.imp.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UsersController {
     @Autowired
-    usersService usersService;
+    UsersService usersService;
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
         return new ResponseEntity<>(usersService.login(loginRequest.getUsername(),loginRequest.getPassword()), HttpStatus.OK);
@@ -24,5 +25,9 @@ public class UsersController {
     @PostMapping("/infomation")
     public ResponseEntity<?> showinfo(@RequestParam String username){
         return new ResponseEntity<>(usersService.showinfo(username),HttpStatus.OK);
+    }
+    @PostMapping("/changeInfomation")
+    public ResponseEntity<?> changeInfomation(@RequestBody UsersEntity usersEntity){
+        return new ResponseEntity<>("",HttpStatus.OK);
     }
 }

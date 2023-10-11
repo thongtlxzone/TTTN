@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity(name = "project")
 public class ProjectEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "project_name")
     private String projectName;

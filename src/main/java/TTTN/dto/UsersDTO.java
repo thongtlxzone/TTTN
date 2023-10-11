@@ -1,5 +1,8 @@
 package TTTN.dto;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
+
 public class UsersDTO {
     private int id;
     private String username;
@@ -9,6 +12,15 @@ public class UsersDTO {
     private String email;
     private String accountStatus;
     private String roleName;
+    private Date birthday;
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
     public int getId() {
         return id;

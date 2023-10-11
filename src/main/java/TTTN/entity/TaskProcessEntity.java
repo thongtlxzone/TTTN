@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity(name = "task_process")
 public class TaskProcessEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "starttime")
     @Temporal(TemporalType.DATE)

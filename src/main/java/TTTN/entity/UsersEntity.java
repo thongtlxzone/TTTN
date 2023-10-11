@@ -1,12 +1,13 @@
 package TTTN.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "users")
 public class UsersEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "username")
     private String username;
@@ -20,6 +21,9 @@ public class UsersEntity {
     private String email;
     @Column(name = "account_status")
     private String status;
+    @Column(name = "birthday")
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity roleEntity;
@@ -84,5 +88,21 @@ public class UsersEntity {
 
     public void setRoleEntity(RoleEntity roleEntity) {
         this.roleEntity = roleEntity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity(name = "task_type")
 public class TaskTypeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "task_type_name")
     private String taskTypeName;

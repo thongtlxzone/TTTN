@@ -3,12 +3,14 @@ package TTTN.service;
 import TTTN.dto.UsersDTO;
 import TTTN.entity.UsersEntity;
 import TTTN.repository.UsersRepository;
-import TTTN.service.imp.usersService;
+import TTTN.service.imp.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+
 @Service
-public class UsersServiceImp implements usersService {
+public class UsersServiceImp implements UsersService {
     @Autowired
     UsersRepository usersRepository;
     @Override
@@ -39,8 +41,18 @@ public class UsersServiceImp implements usersService {
         userDTO.setAvatar(user.getAvatar());
         userDTO.setEmail(user.getEmail());
         userDTO.setAccountStatus((user.getStatus()));
+        userDTO.setBirthday(user.getBirthday());
         userDTO.setRoleName(user.getRoleEntity().getRoleName());
         return userDTO;
     }
-
+    @Override
+    public Boolean changeInformation(UsersEntity usersEntity) {
+        if(usersRepository.existsById(usersEntity.getId())){
+            usersRepository.save(usersEntity);
+            return true;
+        } else {
+            System.out.println("Loi update user");
+            return false;
+        }
+    }
 }

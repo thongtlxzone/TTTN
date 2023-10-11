@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity(name = "project_n_user")
 public class ProjectNUserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     @JoinColumn(name = "user_id")

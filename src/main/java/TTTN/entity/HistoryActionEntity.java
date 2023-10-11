@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity(name = "history_action")
 public class HistoryActionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "time")
     @Temporal(TemporalType.DATE)

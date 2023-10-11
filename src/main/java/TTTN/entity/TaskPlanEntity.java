@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity(name = "task_plan")
 public class TaskPlanEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "day_of_create")
     @Temporal(TemporalType.DATE)

@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity(name = "mini_task")
 public class MiniTaskEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "mini_task_name")
     private String miniTaskName;

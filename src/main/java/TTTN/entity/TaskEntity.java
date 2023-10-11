@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity(name = "task")
 public class TaskEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "taskname")
     private String taskName;
@@ -14,6 +14,8 @@ public class TaskEntity {
     private String description;
     @Column(name = "category")
     private String category;
+    @Column(name = "task_status")
+    private boolean taskStatus;
     @OneToOne
     @JoinColumn(name = "manager_id")
     private UsersEntity manager;
