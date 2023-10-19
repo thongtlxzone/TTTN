@@ -33,6 +33,40 @@ public class UsersEntity {
     private Set<HistoryActionEntity> historyActionEntities;
     @OneToMany(mappedBy = "usersEntity")
     private Set<CommentEntity> commentEntities;
+    @OneToMany(mappedBy = "usersEntity")
+    private Set<ProjectNUserEntity> projectNUserEntities;
+
+    public Set<UserInfoEntity> getUserInfoEntities() {
+        return userInfoEntities;
+    }
+
+    public void setUserInfoEntities(Set<UserInfoEntity> userInfoEntities) {
+        this.userInfoEntities = userInfoEntities;
+    }
+
+    public Set<HistoryActionEntity> getHistoryActionEntities() {
+        return historyActionEntities;
+    }
+
+    public void setHistoryActionEntities(Set<HistoryActionEntity> historyActionEntities) {
+        this.historyActionEntities = historyActionEntities;
+    }
+
+    public Set<CommentEntity> getCommentEntities() {
+        return commentEntities;
+    }
+
+    public void setCommentEntities(Set<CommentEntity> commentEntities) {
+        this.commentEntities = commentEntities;
+    }
+
+    public Set<ProjectNUserEntity> getProjectNUserEntities() {
+        return projectNUserEntities;
+    }
+
+    public void setProjectNUserEntities(Set<ProjectNUserEntity> projectNUserEntities) {
+        this.projectNUserEntities = projectNUserEntities;
+    }
 
     public String getUsername() {
         return username;

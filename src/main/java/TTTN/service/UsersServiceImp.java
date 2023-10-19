@@ -1,7 +1,9 @@
 package TTTN.service;
 
+import TTTN.dto.ProjectDTO;
 import TTTN.dto.UsersDTO;
 import TTTN.entity.UsersEntity;
+import TTTN.payload.LoginResponse;
 import TTTN.repository.UsersRepository;
 import TTTN.service.imp.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,16 @@ public class UsersServiceImp implements UsersService {
     @Autowired
     UsersRepository usersRepository;
     @Override
-    public boolean login(String username, String password) {
-        return usersRepository.findByUsernameAndPassword(username,password).size()>0;
+    public LoginResponse login(String username, String password) {
+        LoginResponse loginResponse = new LoginResponse();
+        if (usersRepository.findByUsernameAndPassword(username,password).size()>0){
+            loginResponse.setLoginSuccess(true);
+            loginResponse.setUserId(usersRepository.findByUsernameAndPassword(username,password).get(0).getId());
+            return loginResponse;
+        }else{
+            loginResponse.setLoginSuccess(false);
+            return loginResponse;
+        }
     }
     @Override
     public boolean signup(UsersEntity usersEntity){
@@ -40,7 +50,6 @@ public class UsersServiceImp implements UsersService {
         userDTO.setFullname(user.getFullname());
         userDTO.setAvatar(user.getAvatar());
         userDTO.setEmail(user.getEmail());
-        userDTO.setAccountStatus((user.getStatus()));
         userDTO.setBirthday(user.getBirthday());
         userDTO.setRoleName(user.getRoleEntity().getRoleName());
         return userDTO;
@@ -51,7 +60,7 @@ public class UsersServiceImp implements UsersService {
             usersRepository.save(usersEntity);
             return true;
         } else {
-            System.out.println("Loi update user");
+            System.out.println("Loi thay doi thong tin nguoi dung");
             return false;
         }
     }

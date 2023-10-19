@@ -29,6 +29,6 @@ public class UsersController {
     }
     @PostMapping("/changeInfomation")
     public ResponseEntity<?> changeInfomation(@RequestBody UsersEntity usersEntity){
-        return new ResponseEntity<>("",HttpStatus.OK);
+        return new ResponseEntity<>(usersService.changeInformation(usersEntity),HttpStatus.OK);
     }
 }

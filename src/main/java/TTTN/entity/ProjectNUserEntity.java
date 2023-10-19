@@ -13,4 +13,28 @@ public class ProjectNUserEntity {
     @ManyToOne
     @JoinColumn(name = "project_id")
     private ProjectEntity projectEntity;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public UsersEntity getUsersEntity() {
+        return usersEntity;
+    }
+
+    public void setUsersEntity(UsersEntity usersEntity) {
+        this.usersEntity = usersEntity;
+    }
+
+    public ProjectEntity getProjectEntity() {
+        return projectEntity;
+    }
+
+    public void setProjectEntity(ProjectEntity projectEntity) {
+        this.projectEntity = projectEntity;
+    }
 }

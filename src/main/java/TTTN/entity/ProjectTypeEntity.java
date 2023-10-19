@@ -14,4 +14,36 @@ public class ProjectTypeEntity {
     private String description;
     @OneToMany(mappedBy = "projectTypeEntity")
     private Set<ProjectEntity> projectEntities;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getProjectTypeName() {
+        return projectTypeName;
+    }
+
+    public void setProjectTypeName(String projectTypeName) {
+        this.projectTypeName = projectTypeName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<ProjectEntity> getProjectEntities() {
+        return projectEntities;
+    }
+
+    public void setProjectEntities(Set<ProjectEntity> projectEntities) {
+        this.projectEntities = projectEntities;
+    }
 }
