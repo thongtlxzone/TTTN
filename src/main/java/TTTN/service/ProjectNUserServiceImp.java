@@ -56,7 +56,7 @@ public class ProjectNUserServiceImp implements ProjectNUserService {
 
     @Override
     public boolean createNewProjectNUser(int userId, int projectId) {
-        if(projectNUserRepository.getALlByUserIdAndProjectId(userId,projectId).size()==0){
+        if(projectNUserRepository.getAllByUserIdAndProjectId(userId,projectId).size()==0){
             try{
                 ProjectNUserEntity projectNUser = new ProjectNUserEntity();
                 projectNUser.setUsersEntity(usersRepository.findById(userId));

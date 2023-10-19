@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class UsersController {
     @Autowired
     UsersService usersService;
+    @PostMapping("/admin")
+    public ResponseEntity<?> getAllUsers(@RequestParam int userId){
+        return new ResponseEntity<>(usersService.getAllUsers(userId),HttpStatus.OK);
+    }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
         return new ResponseEntity<>(usersService.login(loginRequest.getUsername(),loginRequest.getPassword()), HttpStatus.OK);

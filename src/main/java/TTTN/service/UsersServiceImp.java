@@ -1,6 +1,5 @@
 package TTTN.service;
 
-import TTTN.dto.ProjectDTO;
 import TTTN.dto.UsersDTO;
 import TTTN.entity.UsersEntity;
 import TTTN.payload.LoginResponse;
@@ -9,12 +8,35 @@ import TTTN.service.imp.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UsersServiceImp implements UsersService {
     @Autowired
     UsersRepository usersRepository;
+
+    @Override
+    public List<UsersDTO> getAllUsers(int userId) {
+        List<UsersDTO> listUsers = new ArrayList<>();
+        if(usersRepository.findById(userId).getRoleEntity().getRoleName().equals("ADMIN")){
+            for(UsersEntity user : usersRepository.findAll()){
+                UsersDTO usersDTO = new UsersDTO();
+                usersDTO.setFullname(user.getFullname());
+                usersDTO.setEmail(user.getEmail());
+                usersDTO.setAvatar(user.getAvatar());
+                usersDTO.setRoleName(user.getRoleEntity().getRoleName());
+                usersDTO.setAccountStatus(user.getStatus());
+                usersDTO.setId(user.getId());
+                listUsers.add(usersDTO);
+            }
+            return listUsers;
+        }else {
+            System.out.println("Loi khi lay danh sach user");
+            return null;
+        }
+    }
+
     @Override
     public LoginResponse login(String username, String password) {
         LoginResponse loginResponse = new LoginResponse();

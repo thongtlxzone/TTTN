@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectController {
     @Autowired
     ProjectService projectService;
-    @PostMapping(name = "/newProject")
-    public ResponseEntity<?> createProject(@RequestBody ProjectEntity projectEntity){
+    @PostMapping(name = "/createProject")
+    public ResponseEntity<?> created(@RequestBody ProjectEntity projectEntity){
         return new ResponseEntity<>(projectService.createProject(projectEntity), HttpStatus.OK);
+    }
+    @PostMapping(path = "/removeProject")
+    public ResponseEntity<?> removeProject(@RequestParam int projectId, @RequestParam int userId){
+        return new ResponseEntity<>(projectService.deletedProject(projectId,userId),HttpStatus.OK);
     }
 }

@@ -20,4 +20,15 @@ public class ProjectServiceImp implements ProjectService {
             return false;
         }
     }
+
+    @Override
+    public boolean deletedProject(int projectId, int userId) {
+        if(projectRepository.findById(projectId).getProjectManagerId().getId()==userId){ //tim kiem project trong db sau do so sanh managerId va userId
+            projectRepository.deleteById(projectId);
+            return true;
+        }else {
+            System.out.println("Loi khi xoa project");
+            return false;
+        }
+    }
 }

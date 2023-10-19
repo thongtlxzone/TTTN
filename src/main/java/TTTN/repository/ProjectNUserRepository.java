@@ -13,6 +13,6 @@ public interface ProjectNUserRepository extends JpaRepository<ProjectNUserEntity
     List<ProjectNUserEntity> getAllProjectByUserId(int userId);
     @Query("select p from project_n_user as p where p.projectEntity.id = ?1")
     List<ProjectNUserEntity> getAllUserByProjectId(int projectId);
-    @Query("select p form project_n_user as p where p.usersEntity.id = ?1 and p.projectEntity.id = ?2")
-    List<ProjectNUserEntity> getALlByUserIdAndProjectId(int userId, int projectId);
+    @Query(value = "select p form project_n_user as p where p.usersEntity.id = ?1 and p.projectEntity.id = ?2", nativeQuery = true)
+    List<ProjectNUserEntity> getAllByUserIdAndProjectId(int userId, int projectId);
 }
