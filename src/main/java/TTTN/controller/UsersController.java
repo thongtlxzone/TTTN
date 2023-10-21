@@ -27,7 +27,7 @@ public class UsersController {
     public ResponseEntity<?> signup(@RequestBody UsersEntity usersEntity){
         return new ResponseEntity<>(usersService.signup(usersEntity),HttpStatus.OK);
     }
-    @PostMapping("/infomation")
+    @PostMapping("/information")
     public ResponseEntity<?> showinfo(@RequestParam int userId){
         return new ResponseEntity<>(usersService.showinfo(userId),HttpStatus.OK);
     }
