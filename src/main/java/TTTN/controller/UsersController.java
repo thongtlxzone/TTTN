@@ -28,8 +28,8 @@ public class UsersController {
         return new ResponseEntity<>(usersService.signup(usersEntity),HttpStatus.OK);
     }
     @PostMapping("/infomation")
-    public ResponseEntity<?> showinfo(@RequestParam String username){
-        return new ResponseEntity<>(usersService.showinfo(username),HttpStatus.OK);
+    public ResponseEntity<?> showinfo(@RequestParam int userId){
+        return new ResponseEntity<>(usersService.showinfo(userId),HttpStatus.OK);
     }
     @PostMapping("/changeInfomation")
     public ResponseEntity<?> changeInfomation(@RequestBody UsersEntity usersEntity){

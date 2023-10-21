@@ -12,6 +12,6 @@ public interface UsersService {
     List<UsersDTO> getAllUsers(int userId);
     LoginResponse login(String username, String password);
     boolean signup(UsersEntity usersEntity);
-    UsersDTO showinfo(String username);
+    UsersDTO showinfo(int userId);
     Boolean changeInformation(UsersEntity usersEntity);
 }

@@ -66,8 +66,8 @@ public class UsersServiceImp implements UsersService {
     }
 
     @Override
-    public UsersDTO showinfo(String username) {
-        UsersEntity user = usersRepository.findByUsername(username);
+    public UsersDTO showinfo(int userId) {
+        UsersEntity user = usersRepository.findById(userId);
         UsersDTO userDTO = new UsersDTO();
         userDTO.setFullname(user.getFullname());
         userDTO.setAvatar(user.getAvatar());
