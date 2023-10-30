@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.*;
 public class UserInfoController {
     @Autowired
     UserInfoService userInfoService;
-    @GetMapping("")
+    @PostMapping("/showPersonalInfo")
     public ResponseEntity<?> showPersonalInfo(@PathVariable int userId){
         return new ResponseEntity<>(userInfoService.showPersonalInfo(userId), HttpStatus.OK);
     }
     @PostMapping("/newPersonalInfo")
     public ResponseEntity<?> newUserInfo(@RequestBody UserInfoEntity userInfo){
-        return new ResponseEntity<>("",HttpStatus.OK);
+        return new ResponseEntity<>(userInfoService.creatPersonalInfo(userInfo),HttpStatus.OK);
+    }
+    @PostMapping("/changeInfo")
+    public ResponseEntity<?> changePersonalInfo(@RequestBody UserInfoEntity userInfo){
+        return new ResponseEntity<>(userInfoService.changePersonalInfo(userInfo), HttpStatus.OK);
     }
 }

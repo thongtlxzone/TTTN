@@ -9,7 +9,7 @@ public class HistoryActionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "time")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date time;
     @Column(name = "content")
     private String content;

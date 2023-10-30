@@ -26,4 +26,60 @@ public class TaskPlanEntity {
     private Date endDayActual;
     @OneToMany(mappedBy = "taskPlanEntity")
     private Set<TaskEntity> taskEntities;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getDayOfCreate() {
+        return dayOfCreate;
+    }
+
+    public void setDayOfCreate(Date dayOfCreate) {
+        this.dayOfCreate = dayOfCreate;
+    }
+
+    public Date getStartDayExpect() {
+        return startDayExpect;
+    }
+
+    public void setStartDayExpect(Date startDayExpect) {
+        this.startDayExpect = startDayExpect;
+    }
+
+    public Date getEndDayExpect() {
+        return endDayExpect;
+    }
+
+    public void setEndDayExpect(Date endDayExpect) {
+        this.endDayExpect = endDayExpect;
+    }
+
+    public Date getStartDayActual() {
+        return startDayActual;
+    }
+
+    public void setStartDayActual(Date startDayActual) {
+        this.startDayActual = startDayActual;
+    }
+
+    public Date getEndDayActual() {
+        return endDayActual;
+    }
+
+    public void setEndDayActual(Date endDayActual) {
+        this.endDayActual = endDayActual;
+    }
+
+    public Set<TaskEntity> getTaskEntities() {
+        return taskEntities;
+    }
+
+    public void setTaskEntities(Set<TaskEntity> taskEntities) {
+        this.taskEntities = taskEntities;
+    }
 }

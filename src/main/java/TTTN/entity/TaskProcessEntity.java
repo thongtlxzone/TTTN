@@ -1,6 +1,7 @@
 package TTTN.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity(name = "task_process")
@@ -9,11 +10,11 @@ public class TaskProcessEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "starttime")
-    @Temporal(TemporalType.DATE)
-    private Date startTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime startTime;
     @Column(name = "endtime")
-    @Temporal(TemporalType.DATE)
-    private Date endTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime endTime;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UsersEntity usersEntity;

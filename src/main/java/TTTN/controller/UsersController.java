@@ -35,4 +35,8 @@ public class UsersController {
     public ResponseEntity<?> changeInfomation(@RequestBody UsersEntity usersEntity){
         return new ResponseEntity<>(usersService.changeInformation(usersEntity),HttpStatus.OK);
     }
+    @PostMapping("/searchUser")
+    public ResponseEntity<?> searchUserByName(@RequestParam String userName){
+        return new ResponseEntity<>(usersService.searchUserByName(userName),HttpStatus.OK);
+    }
 }

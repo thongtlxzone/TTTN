@@ -69,6 +69,7 @@ public class UsersServiceImp implements UsersService {
     public UsersDTO showinfo(int userId) {
         UsersEntity user = usersRepository.findById(userId);
         UsersDTO userDTO = new UsersDTO();
+        userDTO.setId(user.getId());
         userDTO.setFullname(user.getFullname());
         userDTO.setAvatar(user.getAvatar());
         userDTO.setEmail(user.getEmail());
@@ -77,7 +78,7 @@ public class UsersServiceImp implements UsersService {
         return userDTO;
     }
     @Override
-    public Boolean changeInformation(UsersEntity usersEntity) {
+    public boolean changeInformation(UsersEntity usersEntity) {
         if(usersRepository.existsById(usersEntity.getId())){
             usersRepository.save(usersEntity);
             return true;
@@ -85,5 +86,23 @@ public class UsersServiceImp implements UsersService {
             System.out.println("Loi thay doi thong tin nguoi dung");
             return false;
         }
+    }
+
+    @Override
+    public List<UsersDTO> searchUserByName(String name) {
+        List<UsersEntity> list = usersRepository.searchUsersByFullname(name);
+        List<UsersDTO> listUsers = new ArrayList<>();
+        for (UsersEntity user : list) {
+            UsersDTO temp = new UsersDTO();
+            temp.setId(user.getId());
+            temp.setAvatar(user.getAvatar());
+            temp.setAccountStatus(user.getStatus());
+            temp.setRoleName(user.getRoleEntity().getRoleName());
+            temp.setEmail(user.getEmail());
+            temp.setFullname(user.getFullname());
+            temp.setBirthday(user.getBirthday());
+            listUsers.add(temp);
+        }
+        return listUsers;
     }
 }

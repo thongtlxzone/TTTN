@@ -14,4 +14,36 @@ public class TaskTypeEntity {
     private String description;
     @OneToMany(mappedBy = "taskTypeEntity")
     private Set<TaskEntity> taskEntities;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTaskTypeName() {
+        return taskTypeName;
+    }
+
+    public void setTaskTypeName(String taskTypeName) {
+        this.taskTypeName = taskTypeName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<TaskEntity> getTaskEntities() {
+        return taskEntities;
+    }
+
+    public void setTaskEntities(Set<TaskEntity> taskEntities) {
+        this.taskEntities = taskEntities;
+    }
 }

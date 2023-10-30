@@ -13,5 +13,6 @@ public interface UsersService {
     LoginResponse login(String username, String password);
     boolean signup(UsersEntity usersEntity);
     UsersDTO showinfo(int userId);
-    Boolean changeInformation(UsersEntity usersEntity);
+    boolean changeInformation(UsersEntity usersEntity);
+    List<UsersDTO> searchUserByName(String name);
 }

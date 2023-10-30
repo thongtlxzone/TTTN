@@ -22,4 +22,30 @@ public class UserInfoServiceImp implements UserInfoService {
         userInfoDTO.setMajor(userInfo.getMajor());
         return userInfoDTO;
     }
+
+    @Override
+    public boolean creatPersonalInfo(UserInfoEntity userInfo) {
+        try{
+            userInfoRepository.save(userInfo);
+            return true;
+        }catch (Exception ex){
+            System.out.println("Loi tao thong tin ca nhan" + ex.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean changePersonalInfo(UserInfoEntity userInfo) {
+        try{
+            if (userInfoRepository.existsById(userInfo.getId())) {
+                userInfoRepository.save(userInfo);
+                return true;
+            } else {
+                return false;
+            }
+        }catch (Exception exception){
+            System.out.println("Loi thay doi userPersonalInfo " + exception.getMessage());
+            return false;
+        }
+    }
 }

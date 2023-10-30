@@ -3,10 +3,10 @@ package TTTN.dto;
 public class ProjectDTO {
     private int id;
     private String projectName;
-    private int userCreatedId;
-    private int projectManagerId;
+    private String userCreatedName;
+    private String projectManagerName;
     private String projectAvatar;
-    private int projectTypeId;
+    private String projectType;
 
     public int getId() {
         return id;
@@ -32,27 +32,27 @@ public class ProjectDTO {
         this.projectAvatar = projectAvatar;
     }
 
-    public int getUserCreatedId() {
-        return userCreatedId;
+    public String getUserCreatedName() {
+        return userCreatedName;
     }
 
-    public void setUserCreatedId(int userCreatedId) {
-        this.userCreatedId = userCreatedId;
+    public void setUserCreatedName(String userCreatedName) {
+        this.userCreatedName = userCreatedName;
     }
 
-    public int getProjectManagerId() {
-        return projectManagerId;
+    public String getProjectManagerName() {
+        return projectManagerName;
     }
 
-    public void setProjectManagerId(int projectManagerId) {
-        this.projectManagerId = projectManagerId;
+    public void setProjectManagerName(String projectManagerName) {
+        this.projectManagerName = projectManagerName;
     }
 
-    public int getProjectTypeId() {
-        return projectTypeId;
+    public String getProjectType() {
+        return projectType;
     }
 
-    public void setProjectTypeId(int projectTypeId) {
-        this.projectTypeId = projectTypeId;
+    public void setProjectType(String projectType) {
+        this.projectType = projectType;
     }
 }

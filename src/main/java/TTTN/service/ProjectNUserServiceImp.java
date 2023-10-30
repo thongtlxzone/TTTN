@@ -30,9 +30,9 @@ public class ProjectNUserServiceImp implements ProjectNUserService {
             projectDTO.setId(projectNUser.getProjectEntity().getId());
             projectDTO.setProjectAvatar(projectNUser.getProjectEntity().getProjectAvatar());
             projectDTO.setProjectName(projectNUser.getProjectEntity().getProjectName());
-            projectDTO.setProjectManagerId(projectNUser.getProjectEntity().getProjectManagerId().getId());
+            projectDTO.setProjectManagerName(projectNUser.getProjectEntity().getProjectManager().getId());
             projectDTO.setProjectTypeId(projectNUser.getProjectEntity().getProjectTypeEntity().getId());
-            projectDTO.setUserCreatedId(projectNUser.getProjectEntity().getUserCreatedId().getId());
+            projectDTO.setUserCreatedName(projectNUser.getProjectEntity().getUserCreated().getId());
             projectsByUser.add(projectDTO);
         }
         return projectsByUser;

@@ -14,10 +14,10 @@ public class ProjectEntity {
     private String projectAvatar;
     @OneToOne
     @JoinColumn(name = "user_created_id")
-    private UsersEntity userCreatedId;
+    private UsersEntity userCreated;
     @OneToOne
     @JoinColumn(name = "project_manager_id")
-    private UsersEntity projectManagerId;
+    private UsersEntity projectManager;
     @ManyToOne
     @JoinColumn(name = "project_type_id")
     private ProjectTypeEntity projectTypeEntity;
@@ -50,20 +50,20 @@ public class ProjectEntity {
         this.projectAvatar = projectAvatar;
     }
 
-    public UsersEntity getUserCreatedId() {
-        return userCreatedId;
+    public UsersEntity getUserCreated() {
+        return userCreated;
     }
 
-    public void setUserCreatedId(UsersEntity userCreatedId) {
-        this.userCreatedId = userCreatedId;
+    public void setUserCreated(UsersEntity userCreated) {
+        this.userCreated = userCreated;
     }
 
-    public UsersEntity getProjectManagerId() {
-        return projectManagerId;
+    public UsersEntity getProjectManager() {
+        return projectManager;
     }
 
-    public void setProjectManagerId(UsersEntity projectManagerId) {
-        this.projectManagerId = projectManagerId;
+    public void setProjectManager(UsersEntity projectManager) {
+        this.projectManager = projectManager;
     }
 
     public ProjectTypeEntity getProjectTypeEntity() {
