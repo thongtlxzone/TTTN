@@ -6,8 +6,8 @@ import TTTN.dto.UsersDTO;
 import java.util.List;
 
 public interface ProjectNUserService {
-    List<ProjectDTO> getALlProjectByUser(int userId);
-    List<UsersDTO> getALlUserByProject(int projectId);
+    List<ProjectDTO> getAllProjectByUser(int userId);
+    List<UsersDTO> getAllUserByProject(int projectId);
     boolean createNewProjectNUser(int userId, int projectId);
 
 }

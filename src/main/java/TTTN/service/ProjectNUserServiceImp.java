@@ -22,7 +22,7 @@ public class ProjectNUserServiceImp implements ProjectNUserService {
     @Autowired
     UsersRepository usersRepository;
     @Override
-    public List<ProjectDTO> getALlProjectByUser(int userId) {
+    public List<ProjectDTO> getAllProjectByUser(int userId) {
         List<ProjectDTO> projectsByUser = new ArrayList<>();
         List<ProjectNUserEntity> list = projectNUserRepository.getAllProjectByUserId(userId);
         for (ProjectNUserEntity projectNUser : list) {
@@ -39,9 +39,9 @@ public class ProjectNUserServiceImp implements ProjectNUserService {
     }
 
     @Override
-    public List<UsersDTO> getALlUserByProject(int projectId) {
+    public List<UsersDTO> getAllUserByProject(int projectId) {
         List<UsersDTO> listUser = new ArrayList<>();
-        List<ProjectNUserEntity> list = projectNUserRepository.getAllProjectByUserId(projectId);
+        List<ProjectNUserEntity> list = projectNUserRepository.getAllUserByProjectId(projectId);
         for (ProjectNUserEntity projectNUser : list) {
             UsersDTO user = new UsersDTO();
             user.setId(projectNUser.getUsersEntity().getId());

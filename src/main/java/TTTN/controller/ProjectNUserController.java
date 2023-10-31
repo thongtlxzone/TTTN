@@ -14,12 +14,12 @@ public class ProjectNUserController {
     ProjectNUserService projectNUserService;
 
     @PostMapping("/getAllProjectsByUser")
-    public ResponseEntity<?> getALlProjectsByUser(@RequestParam int userId){
-        return new ResponseEntity<>(projectNUserService.getALlProjectByUser(userId), HttpStatus.OK);
+    public ResponseEntity<?> getAllProjectsByUser(@RequestParam int userId){
+        return new ResponseEntity<>(projectNUserService.getAllProjectByUser(userId), HttpStatus.OK);
     }
     @PostMapping("/getAllUsersByProject")
-    public ResponseEntity<?> getALlUsersByProject(@RequestParam int projectId){
-        return new ResponseEntity<>(projectNUserService.getALlUserByProject(projectId), HttpStatus.OK);
+    public ResponseEntity<?> getAllUsersByProject(@RequestParam int projectId){
+        return new ResponseEntity<>(projectNUserService.getAllUserByProject(projectId), HttpStatus.OK);
     }
     @PostMapping("/newPNU")//tao lien ket giua user va project moi hoac them nguoi dung vao 1 project nao do
     public ResponseEntity<?> creatNewProjectNUser(@RequestParam int userId, @RequestParam int projectId){
