@@ -9,6 +9,7 @@ import org.apache.catalina.User;
 import java.util.List;
 
 public interface UsersService {
+    UsersEntity userdata(int userId);
     List<UsersDTO> getAllUsers(int userId);
     LoginResponse login(String username, String password);
     boolean signup(UsersEntity usersEntity);

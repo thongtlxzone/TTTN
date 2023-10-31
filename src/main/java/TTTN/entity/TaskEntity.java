@@ -31,11 +31,11 @@ public class TaskEntity {
     @ManyToOne
     @JoinColumn(name = "task_plan_id")
     private TaskPlanEntity taskPlanEntity;
-    @OneToMany(mappedBy = "taskEntity")
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<TaskProcessEntity> taskProcessEntities;
-    @OneToMany(mappedBy = "taskEntity")
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<MiniTaskEntity> miniTaskEntities;
-    @OneToMany(mappedBy = "taskEntity")
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CommentEntity> commentEntities;
 
     public int getId() {

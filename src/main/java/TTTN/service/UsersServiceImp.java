@@ -17,6 +17,11 @@ public class UsersServiceImp implements UsersService {
     UsersRepository usersRepository;
 
     @Override
+    public UsersEntity userdata(int userId) {
+        return usersRepository.findById(userId);
+    }
+
+    @Override
     public List<UsersDTO> getAllUsers(int userId) {
         List<UsersDTO> listUsers = new ArrayList<>();
         if(usersRepository.findById(userId).getRoleEntity().getRoleName().equals("ADMIN")){

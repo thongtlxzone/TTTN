@@ -14,4 +14,36 @@ public class MiniTaskEntity {
     @ManyToOne
     @JoinColumn(name = "task_id")
     private TaskEntity taskEntity;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMiniTaskName() {
+        return miniTaskName;
+    }
+
+    public void setMiniTaskName(String miniTaskName) {
+        this.miniTaskName = miniTaskName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TaskEntity getTaskEntity() {
+        return taskEntity;
+    }
+
+    public void setTaskEntity(TaskEntity taskEntity) {
+        this.taskEntity = taskEntity;
+    }
 }

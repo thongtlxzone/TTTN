@@ -21,9 +21,9 @@ public class ProjectEntity {
     @ManyToOne
     @JoinColumn(name = "project_type_id")
     private ProjectTypeEntity projectTypeEntity;
-    @OneToMany(mappedBy = "projectEntity")
+    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProjectNUserEntity> projectNUserEntities;
-    @OneToMany(mappedBy = "projectEntity")
+    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<TaskEntity> taskEntities;
 
     public int getId() {

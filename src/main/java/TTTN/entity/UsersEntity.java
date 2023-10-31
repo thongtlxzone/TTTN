@@ -27,13 +27,13 @@ public class UsersEntity {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity roleEntity;
-    @OneToMany(mappedBy = "usersEntity")
+    @OneToMany(mappedBy = "usersEntity",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UserInfoEntity> userInfoEntities;
-    @OneToMany(mappedBy = "usersEntity")
+    @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<HistoryActionEntity> historyActionEntities;
     @OneToMany(mappedBy = "usersEntity")
     private Set<CommentEntity> commentEntities;
-    @OneToMany(mappedBy = "usersEntity")
+    @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProjectNUserEntity> projectNUserEntities;
 
     public Set<UserInfoEntity> getUserInfoEntities() {
