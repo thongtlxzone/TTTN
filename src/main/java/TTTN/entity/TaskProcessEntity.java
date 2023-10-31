@@ -11,10 +11,10 @@ public class TaskProcessEntity {
     private int id;
     @Column(name = "starttime")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime startTime;
+    private Date startTime;
     @Column(name = "endtime")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime endTime;
+    private Date endTime;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UsersEntity usersEntity;

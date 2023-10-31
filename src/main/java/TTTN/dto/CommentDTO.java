@@ -1,11 +1,12 @@
 package TTTN.dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class CommentDTO {
     private int id;
     private String content;
-    private LocalDateTime update;
+    private Date update;
     private String replyTo;
     private String userCommentName;
     private int taskId;
@@ -26,11 +27,11 @@ public class CommentDTO {
         this.content = content;
     }
 
-    public LocalDateTime getUpdate() {
+    public Date getUpdate() {
         return update;
     }
 
-    public void setUpdate(LocalDateTime update) {
+    public void setUpdate(Date update) {
         this.update = update;
     }
 

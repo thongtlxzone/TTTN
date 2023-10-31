@@ -13,7 +13,7 @@ public class CommentEntity {
     private String content;
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime lastUpdate;
+    private Date lastUpdate;
     @OneToOne
     @JoinColumn(name = "reply_cmt_id")
     private CommentEntity replyComment;
@@ -40,11 +40,11 @@ public class CommentEntity {
         this.content = content;
     }
 
-    public LocalDateTime getLastUpdate() {
+    public Date getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdate) {
+    public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 

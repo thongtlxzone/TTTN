@@ -11,6 +11,6 @@ import java.util.List;
 public interface UsersRepository extends JpaRepository<UsersEntity, Integer> {
     List<UsersEntity> findByUsernameAndPassword(String username, String password);
     UsersEntity findById(int id);
-    @Query("select u form users u where u.fullname like ?1")
+    @Query(value = "select u form users u where u.fullname like ?1", nativeQuery = true)
     List<UsersEntity> searchUsersByFullname(String fullname);
 }
