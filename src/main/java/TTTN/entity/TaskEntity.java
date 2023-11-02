@@ -1,6 +1,7 @@
 package TTTN.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "task")
@@ -16,6 +17,29 @@ public class TaskEntity {
     private String category;
     @Column(name = "task_status")
     private boolean taskStatus;
+    @Column(name = "deadline")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deadline;
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    @Column(name = "date_created")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreated;
     @OneToOne
     @JoinColumn(name = "manager_id")
     private UsersEntity manager;
@@ -28,14 +52,11 @@ public class TaskEntity {
     @ManyToOne
     @JoinColumn(name = "task_type_id")
     private TaskTypeEntity taskTypeEntity;
-    @ManyToOne
-    @JoinColumn(name = "task_plan_id")
-    private TaskPlanEntity taskPlanEntity;
-    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<TaskProcessEntity> taskProcessEntities;
-    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<MiniTaskEntity> miniTaskEntities;
-    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<CommentEntity> commentEntities;
 
     public int getId() {
@@ -70,7 +91,7 @@ public class TaskEntity {
         this.category = category;
     }
 
-    public boolean isTaskStatus() {
+    public boolean isTaskDone() {
         return taskStatus;
     }
 
@@ -108,14 +129,6 @@ public class TaskEntity {
 
     public void setTaskTypeEntity(TaskTypeEntity taskTypeEntity) {
         this.taskTypeEntity = taskTypeEntity;
-    }
-
-    public TaskPlanEntity getTaskPlanEntity() {
-        return taskPlanEntity;
-    }
-
-    public void setTaskPlanEntity(TaskPlanEntity taskPlanEntity) {
-        this.taskPlanEntity = taskPlanEntity;
     }
 
     public Set<TaskProcessEntity> getTaskProcessEntities() {

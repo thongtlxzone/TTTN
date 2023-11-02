@@ -1,11 +1,32 @@
 package TTTN.dto;
 
+import java.util.Date;
+
 public class TaskDTO {
     private int id;
     private String taskName;
     private String description;
     private String category;
     private boolean taskStatus;
+    private Date deadline;
+    private Date dateCreated;
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
     private String managerName;
     private String reporter;
     private String tasktype;

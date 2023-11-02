@@ -15,6 +15,47 @@ public class HistoryActionEntity {
     private String content;
     @Column(name = "updated_content")
     private String updatedContent;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getUpdatedContent() {
+        return updatedContent;
+    }
+
+    public void setUpdatedContent(String updatedContent) {
+        this.updatedContent = updatedContent;
+    }
+
+    public UsersEntity getUsersEntity() {
+        return usersEntity;
+    }
+
+    public void setUsersEntity(UsersEntity usersEntity) {
+        this.usersEntity = usersEntity;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UsersEntity usersEntity;

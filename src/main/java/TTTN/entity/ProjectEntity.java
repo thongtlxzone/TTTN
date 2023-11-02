@@ -12,18 +12,17 @@ public class ProjectEntity {
     private String projectName;
     @Column(name = "project_avatar")
     private String projectAvatar;
-    @OneToOne
-    @JoinColumn(name = "user_created_id")
-    private UsersEntity userCreated;
+    @Column(name = "user_created")
+    private String userCreated;
     @OneToOne
     @JoinColumn(name = "project_manager_id")
     private UsersEntity projectManager;
     @ManyToOne
     @JoinColumn(name = "project_type_id")
     private ProjectTypeEntity projectTypeEntity;
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<ProjectNUserEntity> projectNUserEntities;
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<TaskEntity> taskEntities;
 
     public int getId() {
@@ -50,11 +49,11 @@ public class ProjectEntity {
         this.projectAvatar = projectAvatar;
     }
 
-    public UsersEntity getUserCreated() {
+    public String getUserCreated() {
         return userCreated;
     }
 
-    public void setUserCreated(UsersEntity userCreated) {
+    public void setUserCreated(String userCreated) {
         this.userCreated = userCreated;
     }
 

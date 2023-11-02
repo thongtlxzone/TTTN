@@ -12,7 +12,7 @@ public class TaskTypeEntity {
     private String taskTypeName;
     @Column(name = "description")
     private String description;
-    @OneToMany(mappedBy = "taskTypeEntity")
+    @OneToMany(mappedBy = "taskTypeEntity", fetch = FetchType.LAZY)
     private Set<TaskEntity> taskEntities;
 
     public int getId() {

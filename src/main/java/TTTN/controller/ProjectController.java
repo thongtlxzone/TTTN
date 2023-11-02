@@ -25,12 +25,16 @@ public class ProjectController {
     public ResponseEntity<?> created(@RequestBody ProjectEntity projectEntity){
         return new ResponseEntity<>(projectService.createProject(projectEntity), HttpStatus.OK);
     }
-    @PostMapping(path = "/removeProject")
+    @PostMapping("/removeProject")
     public ResponseEntity<?> removeProject(@RequestParam int projectId, @RequestParam int userId){
         return new ResponseEntity<>(projectService.deletedProject(projectId,userId),HttpStatus.OK);
     }
     @PostMapping("/updateProject")
     public ResponseEntity<?> updateProject(@RequestBody ProjectEntity project, @RequestParam int userId){
         return new ResponseEntity<>(projectService.updateProject(project,userId),HttpStatus.OK);
+    }
+    @PostMapping("/showListTask")
+    public ResponseEntity<?> showListTask(@RequestParam int projectId){
+        return new ResponseEntity<>(projectService.showListTask(projectId),HttpStatus.OK);
     }
 }

@@ -1,7 +1,10 @@
 package TTTN.service;
 
 import TTTN.dto.ProjectDTO;
+import TTTN.dto.TaskDTO;
 import TTTN.entity.ProjectEntity;
+import TTTN.entity.TaskEntity;
+import TTTN.payload.ClassifyProjectTasks;
 import TTTN.repository.ProjectRepository;
 import TTTN.service.imp.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ public class ProjectServiceImp implements ProjectService {
         showPrj.setProjectAvatar(project.getProjectAvatar());
         showPrj.setProjectType(project.getProjectTypeEntity().getProjectTypeName());
         showPrj.setProjectManagerName(project.getProjectManager().getFullname());
+        showPrj.setUserCreatedName(project.getUserCreated());
         return showPrj;
     }
 
@@ -74,8 +78,39 @@ public class ProjectServiceImp implements ProjectService {
             temp.setProjectType(prj.getProjectTypeEntity().getProjectTypeName());
             temp.setProjectName(prj.getProjectName());
             temp.setProjectManagerName(prj.getProjectName());
+            temp.setUserCreatedName(prj.getUserCreated());
             listProject.add(temp);
         }
         return listProject;
+    }
+
+    @Override
+    public ClassifyProjectTasks showListTask(int projectId) {
+        ClassifyProjectTasks projectTasks = new ClassifyProjectTasks();
+        ProjectEntity thisProject = projectRepository.findById(projectId);
+        for (TaskEntity task: thisProject.getTaskEntities()) {
+            TaskDTO taskDTO = new TaskDTO();
+            if(task.isTaskDone()==true){
+                taskDTO.setId(task.getId());
+                taskDTO.setTaskName(task.getTaskName());
+                taskDTO.setDescription(task.getDescription());
+                taskDTO.setManagerName(task.getManager().getFullname());
+                taskDTO.setReporter(task.getReporter().getFullname());
+                taskDTO.setTasktype(task.getTaskTypeEntity().getTaskTypeName());
+                taskDTO.setCategory(task.getCategory());
+                projectTasks.getDoneList().add(taskDTO);
+            }else {
+                taskDTO.setId(task.getId());
+                taskDTO.setTaskName(task.getTaskName());
+                taskDTO.setDescription(task.getDescription());
+                taskDTO.setManagerName(task.getManager().getFullname());
+                taskDTO.setReporter(task.getReporter().getFullname());
+                taskDTO.setTasktype(task.getTaskTypeEntity().getTaskTypeName());
+                taskDTO.setCategory(task.getCategory());
+                taskDTO.setDeadline(task.getDeadline());
+                projectTasks.getToDoList().add(taskDTO);
+            }
+        }
+        return projectTasks;
     }
 }

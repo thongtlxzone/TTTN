@@ -12,7 +12,7 @@ public class ProjectTypeEntity {
     private String projectTypeName;
     @Column(name = "description")
     private String description;
-    @OneToMany(mappedBy = "projectTypeEntity")
+    @OneToMany(mappedBy = "projectTypeEntity", fetch = FetchType.LAZY)
     private Set<ProjectEntity> projectEntities;
 
     public int getId() {

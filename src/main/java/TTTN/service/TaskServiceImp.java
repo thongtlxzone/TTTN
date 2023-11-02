@@ -22,9 +22,11 @@ public class TaskServiceImp implements TaskService {
             TaskDTO temp = new TaskDTO();
             temp.setId(task.getId());
             temp.setTaskName(task.getTaskName());
-            temp.setTaskStatus(task.isTaskStatus());
+            temp.setTaskStatus(task.isTaskDone());
             temp.setCategory(task.getCategory());
             temp.setDescription(task.getDescription());
+            temp.setDateCreated(task.getDateCreated());
+            temp.setDeadline(task.getDeadline());
             temp.setManagerName(task.getManager().getFullname());
             temp.setReporter(task.getReporter().getFullname());
             temp.setTasktype(task.getTaskTypeEntity().getTaskTypeName());

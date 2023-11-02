@@ -12,10 +12,8 @@ public class RoleEntity {
     private String roleName;
     @Column(name = "description")
     private String description;
-    @OneToMany(mappedBy = "roleEntity")
+    @OneToMany(mappedBy = "roleEntity", fetch = FetchType.LAZY)
     private Set<UsersEntity> usersEntitySet;
-    @OneToMany(mappedBy = "roleEntity")
-    private Set<FuntionOfRolesEntity> funtionOfRolesEntities;
 
     public int getId() {
         return id;
@@ -47,13 +45,5 @@ public class RoleEntity {
 
     public void setUsersEntitySet(Set<UsersEntity> usersEntitySet) {
         this.usersEntitySet = usersEntitySet;
-    }
-
-    public Set<FuntionOfRolesEntity> getFuntionOfRolesEntities() {
-        return funtionOfRolesEntities;
-    }
-
-    public void setFuntionOfRolesEntities(Set<FuntionOfRolesEntity> funtionOfRolesEntities) {
-        this.funtionOfRolesEntities = funtionOfRolesEntities;
     }
 }
