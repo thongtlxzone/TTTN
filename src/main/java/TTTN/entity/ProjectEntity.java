@@ -14,7 +14,7 @@ public class ProjectEntity {
     private String projectAvatar;
     @Column(name = "user_created")
     private String userCreated;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "project_manager_id")
     private UsersEntity projectManager;
     @ManyToOne

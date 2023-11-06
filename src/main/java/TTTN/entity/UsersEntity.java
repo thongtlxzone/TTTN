@@ -27,6 +27,10 @@ public class UsersEntity {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity roleEntity;
+    @OneToMany(mappedBy = "projectManager",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<ProjectEntity> projectEntities;
+    @OneToMany(mappedBy = "manager",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<TaskEntity> taskEntities;
     @OneToMany(mappedBy = "usersEntity",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UserInfoEntity> userInfoEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

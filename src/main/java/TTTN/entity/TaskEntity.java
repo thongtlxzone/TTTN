@@ -40,7 +40,7 @@ public class TaskEntity {
     @Column(name = "date_created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "manager_id")
     private UsersEntity manager;
     @OneToOne

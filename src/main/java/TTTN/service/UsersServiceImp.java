@@ -48,6 +48,7 @@ public class UsersServiceImp implements UsersService {
         if (usersRepository.findByUsernameAndPassword(username,password).size()>0){
             loginResponse.setLoginSuccess(true);
             loginResponse.setUserId(usersRepository.findByUsernameAndPassword(username,password).get(0).getId());
+            loginResponse.setRoleName(usersRepository.findByUsernameAndPassword(username,password).get(0).getRoleEntity().getRoleName());
             return loginResponse;
         }else{
             loginResponse.setLoginSuccess(false);

@@ -17,7 +17,7 @@ public class UsersController {
     UsersService usersService;
     @PostMapping("/userdata")
     public ResponseEntity<?> userdata(@RequestParam int userId){
-        return new ResponseEntity<>("",HttpStatus.OK);
+        return new ResponseEntity<>(usersService.userdata(userId),HttpStatus.OK);
     }
     @PostMapping("/admin")
     public ResponseEntity<?> getAllUsers(@RequestParam int userId){
