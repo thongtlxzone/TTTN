@@ -15,6 +15,10 @@ public class TaskTypeEntity {
     @OneToMany(mappedBy = "taskTypeEntity", fetch = FetchType.LAZY)
     private Set<TaskEntity> taskEntities;
 
+    public TaskTypeEntity(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

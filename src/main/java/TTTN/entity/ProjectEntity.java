@@ -49,6 +49,10 @@ public class ProjectEntity {
         this.projectAvatar = projectAvatar;
     }
 
+    public ProjectEntity(int id) {
+        this.id = id;
+    }
+
     public String getUserCreated() {
         return userCreated;
     }

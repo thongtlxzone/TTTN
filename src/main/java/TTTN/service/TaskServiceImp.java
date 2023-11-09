@@ -36,20 +36,20 @@ public class TaskServiceImp implements TaskService {
     }
 
     @Override
-    public boolean createTask(TaskEntity taskEntity, int userId) {
-        if(taskEntity.getManager().getId()!=userId){
-            System.out.println("Loi tao task");
-            return false;
-        }else {
+    public boolean createTask(TaskEntity taskEntity) {
+        try{
             taskRepository.save(taskEntity);
             return true;
+        }catch (Exception e){
+            System.out.println("Loi tao task " + e.getMessage());
+            return false;
         }
     }
 
     @Override
     public boolean deleteTask(int taskId, int userId) {
         try {
-            TaskEntity task = taskRepository.findById(userId).get();
+            TaskEntity task = taskRepository.findById(taskId).get();
             if(task.getManager().getId() == userId){
                 taskRepository.delete(task);
                 return true;
@@ -70,6 +70,16 @@ public class TaskServiceImp implements TaskService {
         }else {
             System.out.println("Loi thay doi task");
             return false;
+        }
+    }
+
+    @Override
+    public TaskEntity getTaskById(int taskId, int userId) {
+        if(taskRepository.findById(taskId).get().getManager().getId()==userId){
+            return taskRepository.findById(taskId).get();
+        }else {
+            System.out.println("Loi lay thong tin task");
+            return null;
         }
     }
 }

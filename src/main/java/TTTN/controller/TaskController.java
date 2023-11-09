@@ -18,9 +18,13 @@ public class TaskController {
     public ResponseEntity<?> getAllTasksOfProject(@RequestParam int projectId){
         return new ResponseEntity<>(taskService.getAllTasksOfProject(projectId), HttpStatus.OK);
     }
+    @PostMapping("/getTaskById")
+    public ResponseEntity<?> getTaskById(@RequestParam int taskId, @RequestParam int userId){
+        return new ResponseEntity<>(taskService.getTaskById(taskId, userId),HttpStatus.OK);
+    }
     @PostMapping("/createTask")
-    public ResponseEntity<?> createTask(@RequestBody TaskEntity task, @RequestParam int userId){
-        return new ResponseEntity<>(taskService.createTask(task,userId),HttpStatus.OK);
+    public ResponseEntity<?> createTask(@RequestBody TaskEntity task){
+        return new ResponseEntity<>(taskService.createTask(task),HttpStatus.OK);
     }
     @PostMapping("/deleteTask")
     public ResponseEntity<?> deleteTask(@RequestParam int taskId, @RequestParam int userId){

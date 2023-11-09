@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface TaskService {
     List<TaskDTO> getAllTasksOfProject(int projectId);
-    boolean createTask(TaskEntity taskEntity, int userId);
+    boolean createTask(TaskEntity taskEntity);
     boolean deleteTask(int taskId, int userId);
     boolean changeTask(TaskEntity task, int userId);
+    TaskEntity getTaskById(int taskId, int userId);
 }

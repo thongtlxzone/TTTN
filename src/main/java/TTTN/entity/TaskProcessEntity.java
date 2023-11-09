@@ -9,16 +9,16 @@ public class TaskProcessEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "starttime")
+    @Column(name = "start_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
-    @Column(name = "endtime")
+    @Column(name = "end_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UsersEntity usersEntity;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_id")
     private TaskEntity taskEntity;
 

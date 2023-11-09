@@ -40,6 +40,10 @@ public class UsersEntity {
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<ProjectNUserEntity> projectNUserEntities;
 
+    public UsersEntity(int id) {
+        this.id = id;
+    }
+
     public Set<UserInfoEntity> getUserInfoEntities() {
         return userInfoEntities;
     }
