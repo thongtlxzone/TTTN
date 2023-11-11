@@ -10,5 +10,5 @@ public interface TaskService {
     boolean createTask(TaskEntity taskEntity);
     boolean deleteTask(int taskId, int userId);
     boolean changeTask(TaskEntity task, int userId);
-    TaskEntity getTaskById(int taskId, int userId);
+    TaskEntity getTaskById(int taskId);
 }

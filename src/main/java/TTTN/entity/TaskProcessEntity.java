@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -11,10 +13,13 @@ public class TaskProcessEntity {
     private int id;
     @Column(name = "start_time")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date startTime;
     @Column(name = "end_time")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date endTime;
+    
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UsersEntity usersEntity;

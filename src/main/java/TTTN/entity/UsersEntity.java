@@ -39,7 +39,7 @@ public class UsersEntity {
     private Set<CommentEntity> commentEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<ProjectNUserEntity> projectNUserEntities;
-
+    public UsersEntity(){}
     public UsersEntity(int id) {
         this.id = id;
     }

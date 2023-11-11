@@ -19,8 +19,8 @@ public class TaskController {
         return new ResponseEntity<>(taskService.getAllTasksOfProject(projectId), HttpStatus.OK);
     }
     @PostMapping("/getTaskById")
-    public ResponseEntity<?> getTaskById(@RequestParam int taskId, @RequestParam int userId){
-        return new ResponseEntity<>(taskService.getTaskById(taskId, userId),HttpStatus.OK);
+    public ResponseEntity<?> getTaskById(@RequestParam int taskId){
+        return new ResponseEntity<>(taskService.getTaskById(taskId),HttpStatus.OK);
     }
     @PostMapping("/createTask")
     public ResponseEntity<?> createTask(@RequestBody TaskEntity task){

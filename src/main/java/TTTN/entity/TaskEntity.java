@@ -58,6 +58,10 @@ public class TaskEntity {
     private Set<MiniTaskEntity> miniTaskEntities;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<CommentEntity> commentEntities;
+    public TaskEntity(){}
+    public TaskEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

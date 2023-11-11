@@ -74,8 +74,8 @@ public class TaskServiceImp implements TaskService {
     }
 
     @Override
-    public TaskEntity getTaskById(int taskId, int userId) {
-        if(taskRepository.findById(taskId).get().getManager().getId()==userId){
+    public TaskEntity getTaskById(int taskId) {
+        if(taskRepository.existsById(taskId)){
             return taskRepository.findById(taskId).get();
         }else {
             System.out.println("Loi lay thong tin task");

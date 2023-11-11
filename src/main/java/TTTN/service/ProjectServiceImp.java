@@ -98,6 +98,7 @@ public class ProjectServiceImp implements ProjectService {
                 taskDTO.setReporter(task.getReporter().getFullname());
                 taskDTO.setTasktype(task.getTaskTypeEntity().getTaskTypeName());
                 taskDTO.setCategory(task.getCategory());
+                taskDTO.setTaskStatus(task.isTaskDone());
                 projectTasks.getDoneList().add(taskDTO);
             }else {
                 taskDTO.setId(task.getId());
@@ -108,6 +109,7 @@ public class ProjectServiceImp implements ProjectService {
                 taskDTO.setTasktype(task.getTaskTypeEntity().getTaskTypeName());
                 taskDTO.setCategory(task.getCategory());
                 taskDTO.setDeadline(task.getDeadline());
+                taskDTO.setTaskStatus(task.isTaskDone());
                 projectTasks.getToDoList().add(taskDTO);
             }
         }

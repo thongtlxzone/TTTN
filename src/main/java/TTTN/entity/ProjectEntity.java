@@ -48,6 +48,7 @@ public class ProjectEntity {
     public void setProjectAvatar(String projectAvatar) {
         this.projectAvatar = projectAvatar;
     }
+    public ProjectEntity(){}
 
     public ProjectEntity(int id) {
         this.id = id;
