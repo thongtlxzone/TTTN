@@ -74,9 +74,21 @@ public class TaskServiceImp implements TaskService {
     }
 
     @Override
-    public TaskEntity getTaskById(int taskId) {
+    public TaskDTO getTaskById(int taskId) {
         if(taskRepository.existsById(taskId)){
-            return taskRepository.findById(taskId).get();
+            TaskEntity task = taskRepository.findById(taskId).get();
+            TaskDTO temp = new TaskDTO();
+            temp.setId(task.getId());
+            temp.setTaskName(task.getTaskName());
+            temp.setTaskStatus(task.isTaskDone());
+            temp.setCategory(task.getCategory());
+            temp.setDescription(task.getDescription());
+            temp.setDateCreated(task.getDateCreated());
+            temp.setDeadline(task.getDeadline());
+            temp.setManagerName(task.getManager().getFullname());
+            temp.setReporter(task.getReporter().getFullname());
+            temp.setTasktype(task.getTaskTypeEntity().getTaskTypeName());
+            return temp;
         }else {
             System.out.println("Loi lay thong tin task");
             return null;

@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -53,10 +55,13 @@ public class TaskEntity {
     @JoinColumn(name = "task_type_id")
     private TaskTypeEntity taskTypeEntity;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<TaskProcessEntity> taskProcessEntities;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<MiniTaskEntity> miniTaskEntities;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<CommentEntity> commentEntities;
     public TaskEntity(){}
     public TaskEntity(int id) {
