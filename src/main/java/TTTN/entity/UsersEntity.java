@@ -13,6 +13,23 @@ public class UsersEntity {
     private String username;
     @Column(name = "password")
     private String password;
+
+    public Set<ProjectEntity> getProjectEntities() {
+        return projectEntities;
+    }
+
+    public void setProjectEntities(Set<ProjectEntity> projectEntities) {
+        this.projectEntities = projectEntities;
+    }
+
+    public Set<TaskEntity> getTaskEntities() {
+        return taskEntities;
+    }
+
+    public void setTaskEntities(Set<TaskEntity> taskEntities) {
+        this.taskEntities = taskEntities;
+    }
+
     @Column(name = "fullname")
     private String fullname;
     @Column(name = "avartar")

@@ -14,6 +14,10 @@ public class RoleEntity {
     private String description;
     @OneToMany(mappedBy = "roleEntity", fetch = FetchType.LAZY)
     private Set<UsersEntity> usersEntitySet;
+    public RoleEntity(){}
+    public RoleEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

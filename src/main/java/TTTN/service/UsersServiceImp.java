@@ -86,6 +86,7 @@ public class UsersServiceImp implements UsersService {
     @Override
     public boolean changeInformation(UsersEntity usersEntity) {
         if(usersRepository.existsById(usersEntity.getId())){
+            usersEntity.setProjectEntities(usersRepository.findById(usersEntity.getId()).getProjectEntities());
             usersRepository.save(usersEntity);
             return true;
         } else {
