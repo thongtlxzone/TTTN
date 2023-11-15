@@ -1,5 +1,8 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -58,5 +61,6 @@ public class HistoryActionEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private UsersEntity usersEntity;
 }

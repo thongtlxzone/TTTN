@@ -1,6 +1,9 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,8 +25,10 @@ public class TaskProcessEntity {
     
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private UsersEntity usersEntity;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     @JoinColumn(name = "task_id")
     private TaskEntity taskEntity;
 

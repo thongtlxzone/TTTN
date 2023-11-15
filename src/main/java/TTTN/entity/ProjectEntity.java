@@ -1,6 +1,8 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -18,12 +20,14 @@ public class ProjectEntity {
     private String userCreated;
     @ManyToOne
     @JoinColumn(name = "project_manager_id")
+    @JsonManagedReference
     private UsersEntity projectManager;
     @ManyToOne
     @JoinColumn(name = "project_type_id")
+    @JsonManagedReference
     private ProjectTypeEntity projectTypeEntity;
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties
+    @JsonBackReference
     private Set<ProjectNUserEntity> projectNUserEntities;
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<TaskEntity> taskEntities;

@@ -1,6 +1,8 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -45,20 +47,25 @@ public class UsersEntity {
     private Date birthday;
     @ManyToOne
     @JoinColumn(name = "role_id")
+    @JsonManagedReference
     private RoleEntity roleEntity;
     @OneToMany(mappedBy = "projectManager",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<ProjectEntity> projectEntities;
     @OneToMany(mappedBy = "manager",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<TaskEntity> taskEntities;
     @OneToMany(mappedBy = "usersEntity",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<UserInfoEntity> userInfoEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<HistoryActionEntity> historyActionEntities;
     @OneToMany(mappedBy = "usersEntity", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties
+    @JsonBackReference
     private Set<CommentEntity> commentEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties
+    @JsonBackReference
     private Set<ProjectNUserEntity> projectNUserEntities;
     public UsersEntity(){}
     public UsersEntity(int id) {

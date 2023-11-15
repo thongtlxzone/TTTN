@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity(name = "project_n_user")
@@ -9,9 +11,11 @@ public class ProjectNUserEntity {
     private int id;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private UsersEntity usersEntity;
     @ManyToOne
     @JoinColumn(name = "project_id")
+    @JsonManagedReference
     private ProjectEntity projectEntity;
 
     public int getId() {

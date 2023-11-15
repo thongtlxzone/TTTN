@@ -1,6 +1,7 @@
 package TTTN.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -44,15 +45,19 @@ public class TaskEntity {
     private Date dateCreated;
     @ManyToOne
     @JoinColumn(name = "manager_id")
+    @JsonManagedReference
     private UsersEntity manager;
     @OneToOne
     @JoinColumn(name = "reporter_id")
+    @JsonManagedReference
     private UsersEntity reporter;
     @ManyToOne
     @JoinColumn(name = "project_id")
+    @JsonManagedReference
     private ProjectEntity projectEntity;
     @ManyToOne
     @JoinColumn(name = "task_type_id")
+    @JsonManagedReference
     private TaskTypeEntity taskTypeEntity;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonBackReference

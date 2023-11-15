@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -16,12 +18,15 @@ public class CommentEntity {
     private Date lastUpdate;
     @OneToOne
     @JoinColumn(name = "reply_cmt_id")
+    @JsonManagedReference
     private CommentEntity replyComment;
     @ManyToOne
     @JoinColumn(name = "task_id")
+    @JsonManagedReference
     private TaskEntity taskEntity;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private UsersEntity usersEntity;
 
     public int getId() {

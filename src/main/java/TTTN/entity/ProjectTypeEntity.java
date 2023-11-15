@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ public class ProjectTypeEntity {
     @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "projectTypeEntity", fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<ProjectEntity> projectEntities;
 
     public int getId() {

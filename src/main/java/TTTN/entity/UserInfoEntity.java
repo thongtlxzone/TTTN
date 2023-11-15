@@ -1,5 +1,9 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity(name = "userinfo")
@@ -17,6 +21,7 @@ public class UserInfoEntity {
     private String hobby;
     @OneToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UsersEntity usersEntity;
     public UserInfoEntity(){}
     public UserInfoEntity(int id) {

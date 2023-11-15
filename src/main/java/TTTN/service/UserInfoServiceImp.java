@@ -14,7 +14,7 @@ public class UserInfoServiceImp implements UserInfoService {
     UserInfoRepository userInfoRepository;
     @Override
     public UserInfoDTO showPersonalInfo(int userId) {
-        UserInfoEntity userInfo = userInfoRepository.getReferenceById(userId);
+        UserInfoEntity userInfo = userInfoRepository.findByUsersEntity(userId);
         UserInfoDTO userInfoDTO = new UserInfoDTO();
         userInfoDTO.setFacebook(userInfo.getFacebook());
         userInfoDTO.setJob(userInfo.getJob());
