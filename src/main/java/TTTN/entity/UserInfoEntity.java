@@ -18,6 +18,10 @@ public class UserInfoEntity {
     @OneToOne
     @JoinColumn(name = "user_id")
     private UsersEntity usersEntity;
+    public UserInfoEntity(){}
+    public UserInfoEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

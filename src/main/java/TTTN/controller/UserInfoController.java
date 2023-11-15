@@ -14,7 +14,7 @@ public class UserInfoController {
     @Autowired
     UserInfoService userInfoService;
     @PostMapping("/showPersonalInfo")
-    public ResponseEntity<?> showPersonalInfo(@PathVariable int userId){
+    public ResponseEntity<?> showPersonalInfo(@RequestParam int userId){
         return new ResponseEntity<>(userInfoService.showPersonalInfo(userId), HttpStatus.OK);
     }
     @PostMapping("/newPersonalInfo")
