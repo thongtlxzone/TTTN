@@ -37,8 +37,8 @@ public class UserInfoServiceImp implements UserInfoService {
     @Override
     public boolean changePersonalInfo(UserInfoEntity userInfo) {
         try{
-            UserInfoEntity userInfoChanged = userInfoRepository.findById(userInfo.getId()).get();
             if (userInfoRepository.existsById(userInfo.getId())) {
+                UserInfoEntity userInfoChanged = userInfoRepository.findById(userInfo.getId()).get();
                 userInfoChanged.setId(userInfo.getId());
                 userInfoChanged.setFacebook(userInfo.getFacebook());
                 userInfoChanged.setHobby(userInfo.getHobby());

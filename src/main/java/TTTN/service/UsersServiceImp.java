@@ -85,8 +85,8 @@ public class UsersServiceImp implements UsersService {
     }
     @Override
     public boolean changeInformation(UsersEntity usersEntity) {
-        UsersEntity changedUser = usersRepository.findById(usersEntity.getId());
         if(usersRepository.existsById(usersEntity.getId())){
+            UsersEntity changedUser = usersRepository.findById(usersEntity.getId());
             changedUser.setId(usersEntity.getId());
             changedUser.setAvatar(usersEntity.getAvatar());
             changedUser.setEmail(usersEntity.getEmail());

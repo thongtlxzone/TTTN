@@ -63,6 +63,7 @@ public class TaskEntity {
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonBackReference
     private Set<CommentEntity> commentEntities;
+
     public TaskEntity(){}
     public TaskEntity(int id) {
         this.id = id;
