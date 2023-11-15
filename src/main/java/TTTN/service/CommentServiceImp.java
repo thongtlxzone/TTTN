@@ -46,8 +46,11 @@ public class CommentServiceImp implements CommentService {
 
     @Override
     public boolean updateCmt(CommentEntity comment, int userId) {
-        if(userId==comment.getUsersEntity().getId() && commentRepository.existsById(comment.getId())){
-            commentRepository.save(comment);
+        CommentEntity commentChanged = commentRepository.findById(comment.getId()).get();
+        if(userId==commentChanged.getUsersEntity().getId() && commentRepository.existsById(comment.getId())){
+            commentChanged.setId(comment.getId());
+            commentChanged.setContent(comment.getContent());
+            commentRepository.save(commentChanged);
             return true;
         }else {
             System.out.println("Loi update cmt");

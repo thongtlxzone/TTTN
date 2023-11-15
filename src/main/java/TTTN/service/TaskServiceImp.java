@@ -64,8 +64,17 @@ public class TaskServiceImp implements TaskService {
 
     @Override
     public boolean changeTask(TaskEntity task, int userId) {
-        if(task.getManager().getId()==userId && taskRepository.existsById(task.getId())){
-            taskRepository.save(task);
+        TaskEntity changedTask = taskRepository.findById(task.getId()).get();
+        if(changedTask.getManager().getId()==userId && taskRepository.existsById(task.getId())){
+            changedTask.setId(task.getId());
+            changedTask.setCategory(task.getCategory());
+            changedTask.setTaskName(task.getTaskName());
+            changedTask.setTaskStatus(task.isTaskDone());
+            changedTask.setDeadline(task.getDeadline());
+            changedTask.setDescription(task.getDescription());
+            changedTask.setReporter(task.getReporter());
+            changedTask.setManager(task.getManager());
+            taskRepository.save(changedTask);
             return true;
         }else {
             System.out.println("Loi thay doi task");

@@ -54,11 +54,18 @@ public class ProjectServiceImp implements ProjectService {
 
     @Override
     public boolean updateProject(ProjectEntity project, int userId) {
-        if(userId != project.getProjectManager().getId()){
+        ProjectEntity projectChanged = projectRepository.findById(project.getId());
+        if(userId != projectChanged.getProjectManager().getId()){
+            System.out.println("Loi quyen han");
             return false;
         }else {
             if (projectRepository.existsById(project.getId())) {
-                projectRepository.save(project);
+                projectChanged.setId(project.getId());
+                projectChanged.setProjectAvatar(project.getProjectAvatar());
+                projectChanged.setProjectManager(project.getProjectManager());
+                projectChanged.setProjectName(project.getProjectName());
+                projectChanged.setProjectTypeEntity(project.getProjectTypeEntity());
+                projectRepository.save(projectChanged);
                 return true;
             } else {
                 System.out.println("Loi thay doi project");

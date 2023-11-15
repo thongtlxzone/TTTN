@@ -85,9 +85,17 @@ public class UsersServiceImp implements UsersService {
     }
     @Override
     public boolean changeInformation(UsersEntity usersEntity) {
+        UsersEntity changedUser = usersRepository.findById(usersEntity.getId());
         if(usersRepository.existsById(usersEntity.getId())){
-            usersEntity.setProjectEntities(usersRepository.findById(usersEntity.getId()).getProjectEntities());
-            usersRepository.save(usersEntity);
+            changedUser.setId(usersEntity.getId());
+            changedUser.setAvatar(usersEntity.getAvatar());
+            changedUser.setEmail(usersEntity.getEmail());
+            changedUser.setFullname(usersEntity.getFullname());
+            changedUser.setBirthday(usersEntity.getBirthday());
+            changedUser.setPassword(usersEntity.getPassword());
+            changedUser.setRoleEntity(usersEntity.getRoleEntity());
+            changedUser.setStatus(usersEntity.getStatus());
+            usersRepository.save(changedUser);
             return true;
         } else {
             System.out.println("Loi thay doi thong tin nguoi dung");
