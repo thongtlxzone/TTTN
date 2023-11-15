@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -53,8 +55,10 @@ public class UsersEntity {
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<HistoryActionEntity> historyActionEntities;
     @OneToMany(mappedBy = "usersEntity", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties
     private Set<CommentEntity> commentEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties
     private Set<ProjectNUserEntity> projectNUserEntities;
     public UsersEntity(){}
     public UsersEntity(int id) {

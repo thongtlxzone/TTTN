@@ -1,5 +1,7 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,6 +23,7 @@ public class ProjectEntity {
     @JoinColumn(name = "project_type_id")
     private ProjectTypeEntity projectTypeEntity;
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties
     private Set<ProjectNUserEntity> projectNUserEntities;
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<TaskEntity> taskEntities;
