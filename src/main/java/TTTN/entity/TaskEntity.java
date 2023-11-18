@@ -45,28 +45,28 @@ public class TaskEntity {
     private Date dateCreated;
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-task")
     private UsersEntity manager;
     @OneToOne
     @JoinColumn(name = "reporter_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "task-reporter")
     private UsersEntity reporter;
     @ManyToOne
     @JoinColumn(name = "project_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "task-project")
     private ProjectEntity projectEntity;
     @ManyToOne
     @JoinColumn(name = "task_type_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "task-taskType")
     private TaskTypeEntity taskTypeEntity;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "task-taskProcess")
     private Set<TaskProcessEntity> taskProcessEntities;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "task-miniTask")
     private Set<MiniTaskEntity> miniTaskEntities;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "task-comment")
     private Set<CommentEntity> commentEntities;
 
     public TaskEntity(){}

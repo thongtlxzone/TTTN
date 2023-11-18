@@ -3,6 +3,7 @@ package TTTN.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -21,7 +22,7 @@ public class UserInfoEntity {
     private String hobby;
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonBackReference(value = "user-uinfo")
     private UsersEntity usersEntity;
     public UserInfoEntity(){}
     public UserInfoEntity(int id) {

@@ -47,26 +47,29 @@ public class UsersEntity {
     private Date birthday;
     @ManyToOne
     @JoinColumn(name = "role_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-role")
     private RoleEntity roleEntity;
     @OneToMany(mappedBy = "projectManager",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-project")
     private Set<ProjectEntity> projectEntities;
     @OneToMany(mappedBy = "manager",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-task")
     private Set<TaskEntity> taskEntities;
     @OneToMany(mappedBy = "usersEntity",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-uinfo")
     private Set<UserInfoEntity> userInfoEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-history")
     private Set<HistoryActionEntity> historyActionEntities;
     @OneToMany(mappedBy = "usersEntity", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-comment")
     private Set<CommentEntity> commentEntities;
     @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-projectNuser")
     private Set<ProjectNUserEntity> projectNUserEntities;
+    @OneToMany(mappedBy = "usersEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "user-taskprocess")
+    private Set<TaskProcessEntity> taskProcessOfUser;
     public UsersEntity(){}
     public UsersEntity(int id) {
         this.id = id;

@@ -61,6 +61,6 @@ public class HistoryActionEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-history")
     private UsersEntity usersEntity;
 }

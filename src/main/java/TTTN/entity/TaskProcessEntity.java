@@ -25,10 +25,10 @@ public class TaskProcessEntity {
     
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-taskprocess")
     private UsersEntity usersEntity;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference(value = "task-taskProcess")
     @JoinColumn(name = "task_id")
     private TaskEntity taskEntity;
 

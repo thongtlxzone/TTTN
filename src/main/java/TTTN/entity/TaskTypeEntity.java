@@ -1,6 +1,7 @@
 package TTTN.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class TaskTypeEntity {
     @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "taskTypeEntity", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "task-taskType")
     private Set<TaskEntity> taskEntities;
     public TaskTypeEntity(){}
 

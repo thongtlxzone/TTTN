@@ -20,16 +20,17 @@ public class ProjectEntity {
     private String userCreated;
     @ManyToOne
     @JoinColumn(name = "project_manager_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-project")
     private UsersEntity projectManager;
     @ManyToOne
     @JoinColumn(name = "project_type_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "project-projectType")
     private ProjectTypeEntity projectTypeEntity;
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "project-projectNuser")
     private Set<ProjectNUserEntity> projectNUserEntities;
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "task-project")
     private Set<TaskEntity> taskEntities;
 
     public int getId() {

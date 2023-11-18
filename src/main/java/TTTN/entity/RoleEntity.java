@@ -1,6 +1,7 @@
 package TTTN.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class RoleEntity {
     @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "roleEntity", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "user-role")
     private Set<UsersEntity> usersEntitySet;
     public RoleEntity(){}
     public RoleEntity(int id) {

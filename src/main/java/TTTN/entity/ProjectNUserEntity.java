@@ -1,5 +1,6 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -11,11 +12,11 @@ public class ProjectNUserEntity {
     private int id;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-projectNuser")
     private UsersEntity usersEntity;
     @ManyToOne
     @JoinColumn(name = "project_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "project-projectNuser")
     private ProjectEntity projectEntity;
 
     public int getId() {

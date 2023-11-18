@@ -1,5 +1,6 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -18,15 +19,15 @@ public class CommentEntity {
     private Date lastUpdate;
     @OneToOne
     @JoinColumn(name = "reply_cmt_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "comment")
     private CommentEntity replyComment;
     @ManyToOne
     @JoinColumn(name = "task_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "task-comment")
     private TaskEntity taskEntity;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-comment")
     private UsersEntity usersEntity;
 
     public int getId() {

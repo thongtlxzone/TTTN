@@ -1,5 +1,6 @@
 package TTTN.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class MiniTaskEntity {
     private String description;
     @ManyToOne
     @JoinColumn(name = "task_id")
-    @JsonManagedReference
+    @JsonBackReference(value = "task-miniTask")
     private TaskEntity taskEntity;
 
     public int getId() {
