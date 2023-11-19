@@ -22,8 +22,8 @@ public class ProjectController {
         return new ResponseEntity<>(projectService.showProject(projectId),HttpStatus.OK);
     }
     @PostMapping("/createProject")
-    public ResponseEntity<?> created(@RequestBody ProjectEntity projectEntity){
-        return new ResponseEntity<>(projectService.createProject(projectEntity), HttpStatus.OK);
+    public ResponseEntity<?> created(@RequestBody ProjectEntity projectEntity, @RequestParam int userId){
+        return new ResponseEntity<>(projectService.createProject(projectEntity, userId), HttpStatus.OK);
     }
     @PostMapping("/removeProject")
     public ResponseEntity<?> removeProject(@RequestParam int projectId, @RequestParam int userId){

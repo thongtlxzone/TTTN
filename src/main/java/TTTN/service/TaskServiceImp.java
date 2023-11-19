@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskServiceImp implements TaskService {
@@ -64,20 +65,29 @@ public class TaskServiceImp implements TaskService {
 
     @Override
     public boolean changeTask(TaskEntity task, int userId) {
-        TaskEntity changedTask = taskRepository.findById(task.getId()).get();
-        if(changedTask.getManager().getId()==userId && taskRepository.existsById(task.getId())){
-            changedTask.setId(task.getId());
-            changedTask.setCategory(task.getCategory());
-            changedTask.setTaskName(task.getTaskName());
-            changedTask.setTaskStatus(task.isTaskDone());
-            changedTask.setDeadline(task.getDeadline());
-            changedTask.setDescription(task.getDescription());
-            changedTask.setReporter(task.getReporter());
-            changedTask.setManager(task.getManager());
-            taskRepository.save(changedTask);
-            return true;
-        }else {
-            System.out.println("Loi thay doi task");
+        Optional<TaskEntity> optionalTask = taskRepository.findById(task.getId());
+
+        if (optionalTask.isPresent()) {
+            TaskEntity changedTask = optionalTask.get();
+
+            if (changedTask.getManager() != null && changedTask.getManager().getId() == userId) {
+                changedTask.setId(task.getId());
+                changedTask.setCategory(task.getCategory());
+                changedTask.setTaskName(task.getTaskName());
+                changedTask.setTaskStatus(task.isTaskDone());
+                changedTask.setDeadline(task.getDeadline());
+                changedTask.setDescription(task.getDescription());
+                changedTask.setReporter(task.getReporter());
+                changedTask.setManager(task.getManager());
+
+                taskRepository.save(changedTask);
+                return true;
+            } else {
+                System.out.println("Loi thay doi task");
+                return false;
+            }
+        } else {
+            System.out.println("Task khong ton tai");
             return false;
         }
     }

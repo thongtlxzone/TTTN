@@ -6,6 +6,7 @@ import TTTN.entity.ProjectEntity;
 import TTTN.entity.TaskEntity;
 import TTTN.payload.ClassifyProjectTasks;
 import TTTN.repository.ProjectRepository;
+import TTTN.service.imp.ProjectNUserService;
 import TTTN.service.imp.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import java.util.List;
 public class ProjectServiceImp implements ProjectService {
     @Autowired
     ProjectRepository projectRepository;
+    @Autowired
+    ProjectNUserService projectNUserService;
     @Override
     public ProjectDTO showProject(int projectId) {
         ProjectEntity project = projectRepository.findById(projectId);
@@ -31,9 +34,11 @@ public class ProjectServiceImp implements ProjectService {
     }
 
     @Override
-    public boolean createProject(ProjectEntity projectEntity) {
+    public boolean createProject(ProjectEntity projectEntity, int userId) {
         if(projectRepository.findByProjectName(projectEntity.getProjectName()).size()==0){
             projectRepository.save(projectEntity);
+            ProjectEntity project = projectRepository.findByProjectName(projectEntity.getProjectName()).get(-1);
+            projectNUserService.createNewProjectNUser(userId,project.getId());
             return true;
         }else {
             System.out.println("Loi khi tao project moi");
