@@ -111,6 +111,7 @@ public class ProjectServiceImp implements ProjectService {
                 taskDTO.setTasktype(task.getTaskTypeEntity().getTaskTypeName());
                 taskDTO.setCategory(task.getCategory());
                 taskDTO.setTaskStatus(task.isTaskDone());
+                taskDTO.setDateCreated(task.getDateCreated());
                 projectTasks.getDoneList().add(taskDTO);
             }else {
                 taskDTO.setId(task.getId());

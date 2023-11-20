@@ -79,7 +79,7 @@ public class TaskServiceImp implements TaskService {
                 changedTask.setDescription(task.getDescription());
                 changedTask.setReporter(task.getReporter());
                 changedTask.setManager(task.getManager());
-
+                changedTask.setTaskTypeEntity(task.getTaskTypeEntity());
                 taskRepository.save(changedTask);
                 return true;
             } else {
