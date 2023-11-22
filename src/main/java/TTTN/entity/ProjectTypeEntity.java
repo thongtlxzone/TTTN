@@ -18,6 +18,10 @@ public class ProjectTypeEntity {
     @OneToMany(mappedBy = "projectTypeEntity", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "project-projectType")
     private Set<ProjectEntity> projectEntities;
+    public ProjectTypeEntity(){}
+    public ProjectTypeEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

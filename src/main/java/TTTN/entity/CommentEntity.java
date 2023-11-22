@@ -29,6 +29,10 @@ public class CommentEntity {
     @JoinColumn(name = "user_id")
     @JsonBackReference(value = "user-comment")
     private UsersEntity usersEntity;
+    public CommentEntity(){}
+    public CommentEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

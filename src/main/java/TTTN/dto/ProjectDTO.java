@@ -5,8 +5,17 @@ public class ProjectDTO {
     private String projectName;
     private String userCreatedName;
     private String projectManagerName;
+    private int projectManagerId;
     private String projectAvatar;
     private String projectType;
+
+    public int getProjectManagerId() {
+        return projectManagerId;
+    }
+
+    public void setProjectManagerId(int projectManagerId) {
+        this.projectManagerId = projectManagerId;
+    }
 
     public int getId() {
         return id;

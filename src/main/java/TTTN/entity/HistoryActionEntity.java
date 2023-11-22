@@ -18,6 +18,10 @@ public class HistoryActionEntity {
     private String content;
     @Column(name = "updated_content")
     private String updatedContent;
+    public HistoryActionEntity(){}
+    public HistoryActionEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

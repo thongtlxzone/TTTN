@@ -92,7 +92,6 @@ public class UsersServiceImp implements UsersService {
             changedUser.setEmail(usersEntity.getEmail());
             changedUser.setFullname(usersEntity.getFullname());
             changedUser.setBirthday(usersEntity.getBirthday());
-            changedUser.setPassword(usersEntity.getPassword());
             changedUser.setRoleEntity(usersEntity.getRoleEntity());
             changedUser.setStatus(usersEntity.getStatus());
             usersRepository.save(changedUser);

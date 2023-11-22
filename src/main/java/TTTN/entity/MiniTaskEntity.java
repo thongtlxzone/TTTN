@@ -18,6 +18,10 @@ public class MiniTaskEntity {
     @JoinColumn(name = "task_id")
     @JsonBackReference(value = "task-miniTask")
     private TaskEntity taskEntity;
+    public MiniTaskEntity(){}
+    public MiniTaskEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

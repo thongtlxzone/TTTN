@@ -30,6 +30,7 @@ public class ProjectServiceImp implements ProjectService {
         showPrj.setProjectType(project.getProjectTypeEntity().getProjectTypeName());
         showPrj.setProjectManagerName(project.getProjectManager().getFullname());
         showPrj.setUserCreatedName(project.getUserCreated());
+        showPrj.setProjectManagerId(project.getProjectManager().getId());
         return showPrj;
     }
 
@@ -37,7 +38,7 @@ public class ProjectServiceImp implements ProjectService {
     public boolean createProject(ProjectEntity projectEntity, int userId) {
         if(projectRepository.findByProjectName(projectEntity.getProjectName()).size()==0){
             projectRepository.save(projectEntity);
-            ProjectEntity project = projectRepository.findByProjectName(projectEntity.getProjectName()).get(-1);
+            ProjectEntity project = projectRepository.findByProjectName(projectEntity.getProjectName()).get(0);
             projectNUserService.createNewProjectNUser(userId,project.getId());
             return true;
         }else {

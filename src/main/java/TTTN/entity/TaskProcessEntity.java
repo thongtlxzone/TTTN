@@ -22,7 +22,7 @@ public class TaskProcessEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date endTime;
-    
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference(value = "user-taskprocess")
@@ -31,6 +31,10 @@ public class TaskProcessEntity {
     @JsonBackReference(value = "task-taskProcess")
     @JoinColumn(name = "task_id")
     private TaskEntity taskEntity;
+    public TaskProcessEntity(){}
+    public TaskProcessEntity(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
