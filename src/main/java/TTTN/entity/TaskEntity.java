@@ -59,7 +59,7 @@ public class TaskEntity {
     @JoinColumn(name = "task_type_id")
     @JsonBackReference(value = "task-taskType")
     private TaskTypeEntity taskTypeEntity;
-    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference(value = "task-taskProcess")
     private Set<TaskProcessEntity> taskProcessEntities;
     @OneToMany(mappedBy = "taskEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

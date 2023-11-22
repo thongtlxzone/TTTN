@@ -20,6 +20,18 @@ public class HistoryActionServiceImp implements HistoryActionService {
     HistoryActionRepository historyActionRepository;
     @PersistenceContext
     EntityManager entityManager;
+
+    @Override
+    public boolean createHistory(HistoryActionEntity historyAction) {
+        try {
+            historyActionRepository.save(historyAction);
+            return true;
+        }catch (Exception ex){
+            System.out.println("Loi tao history " + ex.getMessage());
+            return false;
+        }
+    }
+
     @Override
     public List<HistoryActionDTO> getAllHistoryActionByUserId(int userId) {
         List<HistoryActionEntity> list = historyActionRepository.getAllHistoryActionByUserId(userId);

@@ -1,5 +1,6 @@
 package TTTN.controller;
 
+import TTTN.entity.HistoryActionEntity;
 import TTTN.service.imp.HistoryActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,5 +16,9 @@ public class HistoryActionController {
     @PostMapping("/getHistory")
     public ResponseEntity<?> getHistory(@RequestParam int userId){
         return new ResponseEntity<>(historyActionService.getAllHistoryActionByUserId(userId), HttpStatus.OK);
+    }
+    @PostMapping("/createHistory")
+    public ResponseEntity<?> createHistory(@RequestBody HistoryActionEntity historyAction){
+        return new ResponseEntity<>(historyActionService.createHistory(historyAction),HttpStatus.OK);
     }
 }
