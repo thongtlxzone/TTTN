@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -43,6 +44,7 @@ public class HistoryActionServiceImp implements HistoryActionService {
             historyActionDTO.setTime(history.getTime());
             historyActionDTOS.add(historyActionDTO);
         }
+        historyActionDTOS.sort(Comparator.comparing(HistoryActionDTO::getTime).reversed());//sort historyActionDTO theo Time theo thuat toan TimSort(Merge + Insertion Sort)
         return historyActionDTOS;
     }
     @Override
