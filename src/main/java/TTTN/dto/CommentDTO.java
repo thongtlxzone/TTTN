@@ -7,7 +7,7 @@ public class CommentDTO {
     private int id;
     private String content;
     private Date update;
-    private String replyTo;
+    private int replyTo;
     private String userCommentName;
     private int taskId;
 
@@ -35,11 +35,11 @@ public class CommentDTO {
         this.update = update;
     }
 
-    public String getReplyTo() {
+    public int getReplyTo() {
         return replyTo;
     }
 
-    public void setReplyTo(String replyTo) {
+    public void setReplyTo(int replyTo) {
         this.replyTo = replyTo;
     }
 

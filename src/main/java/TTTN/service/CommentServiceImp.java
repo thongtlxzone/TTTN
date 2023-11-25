@@ -26,7 +26,7 @@ public class CommentServiceImp implements CommentService {
             temp.setUpdate(cmt.getLastUpdate());
             temp.setUserCommentName(cmt.getUsersEntity().getFullname());
             if(cmt.getReplyComment()!=null){
-                temp.setReplyTo(cmt.getReplyComment().getContent());
+                temp.setReplyTo(cmt.getReplyComment().getId());
             }
             listComment.add(temp);
         }
